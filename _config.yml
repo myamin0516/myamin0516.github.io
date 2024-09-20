@@ -1,13 +1,17 @@
 title: Mark Yamin
-logo: "/images/logo.png?raw=true" # your photo (or logo) here
-description: > # your text below (remove <br> elements if you don't need line breaks)
-  First description 
+logo: "/images/face_logo.jpg?raw=true"
+description: >
+  Hi, I'm Mark! I'm currently pursuing a Bachelor's in Information Science with dual minors in Statistics and Data Science at the University of North Carolina at Chapel Hill.
+  I'll be graduating in mid-2025. I have nearly two years experience as a certified pharmacy technician. While the role doesn't involve any data work, I've been building a strong
+  foundation in data cleaning, management and visualization, as well as problem solving, communication, and reporting results in my course work and my free time.
   <br><br>
-  Second description 
+  I'm passionate about leveraging my skills in Python, Excel, and Tableau to create practical dashboards and visualizations.
+  I also enjoy chess, music, audiobooks, game development, and learning about AI applications. I hope you find some of my work 
+  interesting.
   <br><br>
   <a href="https:/www.linkedin.com/in/mark-yamin-058409288/">View My LinkedIn Profile</a> 
   
 remote_theme: pages-themes/minimal@v0.2.0
 plugins:
 - jekyll-remote-theme
-google_analytics: UA-000000-0 # your Google Analytics tracking ID here
+google_analytics: G-LJ0L9TETFF
