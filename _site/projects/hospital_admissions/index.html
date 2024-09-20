@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Care Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Light background color */
+        }
+        .navbar {
+            background-color: #60a8a7; /* Blue background for the navbar */
+        }
+        .navbar .nav-link {
+            color: #ffffff; /* White text color */
+        }
+        .navbar .nav-link:hover {
+            color: #d62e2e; /* Gold color on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+        .text-container {
+            margin: 0 auto; /* Centering the text container */
+            max-width: 800px; /* Maximum width of the text content */
+            padding: 20px; /* Padding around the text content */
+        }
+        .tableauPlaceholder {
+            max-width: 100%; /* Responsive width */
+            height: 900px; /* Set height for the dashboard */
+            margin: 20px 0; /* Margin above and below the dashboard */
+        }
+        h2 {
+            font-size: 1.5rem; /* Adjust the size as needed (e.g., 1.5rem or 24px) */
+        }
+    </style>
+</head>
+<body>
+    <header class="text-center mb-4">
+        <div class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <h1 class="navbar-brand mb-0">Diabetes Care Analysis</h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../index.html" id="home-tab">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../portfolio.html" id="portfolio-tab">Portfolio</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section text-container">
+            <h2>Project Overview</h2>
+            <p>
+                This project delves into data spanning a decade of clinical care for diabetic patients across the U.S. hospitals.
+                Each row represents a patient's hospital admission and each column describes a feature of their admission.
+                The objective is to analyze patient readmission rates and identify factors that may influence these rates. In short, are there any
+                factors surrounding readmission that hospitals should be aware of and/or can work to improve? By examining patient 
+                demographics, hospital stay details, and treatment, this analysis seeks to uncover actionable insights for improving patient
+                care and reducing readmissions.
+            </p>
+        </section>
+
+        <section class="content-section text-container">
+            <h2>Scope and Goals</h2>
+            <p>The dataset has many features, including patient demographics, admission details, diagnosis codes, and medication data. For this analysis, the focus is on understanding how factors such as patient age, primary diagnosis, length of hospital stay, and medication usage correlate with readmission rates. The goals are to:</p>
+            <ul>
+                <li><strong>Explore the general characteristics of diabetic patients and their hospital visits:</strong>
+                    <ul>
+                        <li>Examine the distribution of patient demographics (age, gender, etc.) across different readmission categories.</li>
+                        <li>Analyze patterns in hospital admissions, including frequency and length of stays.</li>
+                        <li>Identify common primary diagnoses and their correlation with readmission rates.</li>
+                    </ul>
+                </li>
+                <li><strong>Analyze the relationship between various factors and readmission rates to provide actionable insights:</strong>
+                    <ul>
+                        <li>Evaluate the impact of primary diagnosis and its severity on the likelihood of readmission.</li>
+                        <li>Investigate the effect of length of hospital stay and if various tests were/weren't done.</li>
+                        <li>Identify factors that may contribute to higher/lower readmission rates, and suggest solutions.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="content-section">
+            <!-- Tableau Embed Code -->
+            <div class="tableauPlaceholder" id="viz1723241736258">
+                <noscript>
+                    <a href='#'>
+                        <img alt=' ' src='https://public.tableau.com/static/images/Di/DiabetesCareAnalysis1999-2008/1999-2008DiabetesPatientCareOverviewandReadmissionAnalysis/1_rss.png' style='border: none' />
+                    </a>
+                </noscript>
+                <object class="tableauViz" style="display:none;">
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                    <param name='embed_code_version' value='3' /> 
+                    <param name='site_root' value='' />
+                    <param name='name' value='DiabetesCareAnalysis1999-2008/1999-2008DiabetesPatientCareOverviewandReadmissionAnalysis' />
+                    <param name='tabs' value='yes' />
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='https://public.tableau.com/static/images/Di/DiabetesCareAnalysis1999-2008/1999-2008DiabetesPatientCareOverviewandReadmissionAnalysis/1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                </object>
+            </div>
+            <script type="text/javascript">
+                var divElement = document.getElementById('viz1723241736258');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.width = '100%'; /* Full width for larger screens */
+                    vizElement.style.height = '900px'; /* Original height */
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.width = '100%'; /* Full width for medium screens */
+                    vizElement.style.height = '900px'; /* Original height */
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = '900px'; /* Original height */
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
+        </section>
+
+        <section class="content-section text-container">
+            <h2>Data Preparation and Methodology</h2>
+            <p>Data preparation involved cleaning and transforming the dataset to focus on relevant features. Unnecessary fields were removed, and encoded diagnosis codes were translated for clarity. Diagnosis codes with fewer occurrences were categorized as "N/A" to maintain simplicity. Key tests and medications were analyzed to assess their impact on readmission rates.</p>
+        </section>
+
+        <section class="content-section text-container">
+            <h2>Insights and Findings</h2>
+            <p>The analysis revealed several important trends:</p>
+            <ul>
+                <li>Patients who did not receive diabetes medication had lower readmission rates, potentially due to better overall health or less severe conditions.</li>
+                <li>High readmission rates were observed for chronic conditions such as diabetes mellitus and congestive heart failure, indicating a need for improved patient education and adherence to treatment plans.</li>
+                <li>Mixed results were found regarding the impact of key diagnostic tests like A1C and max glucose serum on readmission rates, suggesting the need for a more nuanced approach to diabetes management.</li>
+            </ul>
+        </section>
+
+        <section class="content-section text-container">
+            <h2>Conclusion</h2>
+            <p>The findings underscore the importance of proactive healthcare management, especially in educating patients about post-discharge care and ensuring proper medication adherence. The analysis provides a foundation for hospitals to enhance patient outcomes and reduce readmission rates through targeted interventions and continuous quality improvement efforts.</p>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

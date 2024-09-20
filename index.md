@@ -2,22 +2,17 @@
 
 ---
 
-### Category Name 1 
-
-[Project 1 Title](/sample_page)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
-
----
-[Project 2 Title](/pdf/sample_presentation.pdf)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
-
----
-[Project 3 Title](http://example.com/)
-<img src="images/dummy_thumbnail.jpg?raw=true"/>
+[Hospital Admissions Dashboard](/projects/hospital_admissions/index.html)
+<img src="projects/hospital_admissions/cover_image.png?raw=true" alt="Hospital Admissions Cover Image"/>
 
 ---
 
-### Category Name 2
+[Median U.S. House Prices](/projects/house_prices/index.html)
+<img src="projects/house_prices/cover_image.png?raw=true" alt="Median U.S. House Prices Cover Image"/>
+
+---
+
+### Other Projects
 
 - [Project 1 Title](http://example.com/)
 - [Project 2 Title](http://example.com/)
@@ -26,10 +21,3 @@
 - [Project 5 Title](http://example.com/)
 
 ---
-
-
-
-
----
-<p style="font-size:11px">Page template forked from <a href="https://github.com/evanca/quick-portfolio">evanca</a></p>
-<!-- Remove above link if you don't want to attibute -->
