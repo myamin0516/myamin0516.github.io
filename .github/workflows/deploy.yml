@@ -1,0 +1,30 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Change to your default branch if it's not 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Jekyll
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'  # Specify the version you need
+
+      - name: Build site
+        run: bundle exec jekyll build
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+permissions:
+  id-token: write
+  contents: read
