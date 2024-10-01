@@ -136,7 +136,7 @@ p, ul, ol, table, pre, dl { margin: 0 0 20px; }
 
 h1, h2, h3 { line-height: 1.1; }
 
-h1 { font-size: 28px; }
+h1 { font-size: 20px; }
 
 h2 { color: #393939; }
 
@@ -150,7 +150,7 @@ a small { font-size: 11px; color: #777; margin-top: -0.3em; display: block; }
 
 a:hover small { color: #777; }
 
-.wrapper { max-width: 860px; width: 100%; margin: 0 auto; font-size: 12px;}
+.wrapper { width: 860px; margin: 0 auto; font-size: 12px; }
 
 blockquote { border-left: 1px solid #e5e5e5; margin: 0; padding: 0 0 0 20px; font-style: italic; }
 
