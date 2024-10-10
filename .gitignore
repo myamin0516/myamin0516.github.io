@@ -1,0 +1,11 @@
+# Ignore generated site files
+_site/
+.jekyll-cache/
+.sass-cache/
+# Ignore system files
+.DS_Store
+# Ignore log files and temp files
+*.log
+*.tmp
+# Ignore any zip files
+*.zip
