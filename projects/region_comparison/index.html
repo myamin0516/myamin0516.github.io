@@ -29,6 +29,21 @@
         h2 {
             font-size: 1.5rem; /* Adjust the size as needed (e.g., 1.5rem or 24px) */
         }
+        .dataframe th, .dataframe td {
+            padding: 3px;
+            text-align: center;
+        }
+        .dataframe th {
+            background-color: #f8f9fa;
+        }
+        .dataframe tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .dataframe {
+            width: 100%;
+            max-width: 500px;
+            margin: left;
+        }
     </style>
 </head>
 <body>
@@ -57,43 +72,227 @@
         <section class="content-section text-container">
             <h2>Project Overview</h2>
                 <p>
-                    After observing the choropleth of U.S. house prices, there is clearly a lot of variation. The goal of this project is to explore the underlying factors contributing to these differences and determine what drives house prices in various areas. For this study, I'll concentrate on the Northeast and West. First I'll introduce the new data used in this analysis, then conduct some exploratory data analyis to visualize some keys trends, last,y I'll apply multiple regression models to evaluate the impact of these variables in both regions.
+                    After observing the choropleth of U.S. house prices, there is clearly a lot of variation. The goal of this project is to explore the underlying factors contributing to these differences and determine what drives house prices in various areas. For this study, I'll concentrate on the Northeast and West. First I'll introduce the new data used in this analysis, then conduct some exploratory data analyis to visualize some keys trends, lastly I'll apply some regression models to evaluate the impact of these variables in both regions.<br>
+                    <div class="text-center">
+                        <img src="images/west_and_northeast.png" alt="west and northeast on map" class="img-fluid" style="max-width: 600px;" center>
+                    </div>
                 </p>
             <h2>Understanding House Price Influences</h2>
             <p>
                 In the process of buying a home, understanding the factors that affect house prices is essential. While many variables contribute to pricing, establishing direct causation for any single factor is complex. To analyze this relationship effectively, I categorized the influencing elements into two main groups: house characteristics and demographics.<br><br>
                 
-                House characteristics will refer to the physical attributes of a property—such as size, number of beds/baths, and lot size—that can directly impact market value. Demographics, in contrast, will refer to socio-economic factors tied to the location, influencing quality of life for potential buyers. One might assume that house characteristics have a stronger impact on prices compared to demographics, however this research showed the opposite. My aim is to explore how well these factors can predict listing prices and draw insightful conclusions from the analysis.<br><br>
+                House characteristics will refer to the physical attributes of a property—such as size, number of beds/baths, and lot size—that can directly impact market value. Demographics, in contrast, will refer to socio-economic factors tied to the location, influencing quality of life for potential buyers. My aim is to explore how well these factors can predict listing prices and draw insightful conclusions from the analysis.<br><br>
 
                 To frame my analysis I'll pose the critical question:<br>
                     <li>
-                        For the Western and Northeast regions, how do the number of beds, baths, lot acres, population density, unemployment rate, house size, city, state, and crime rate predict house prices?
+                        For the Western and Northeast regions, how do housing and demographic characteristics of properties serve to predict listing price?
                     </li>
             </p>
             <h2>Why?</h2>
             <p>
-                This investigation is crucial because purchasing a home is a big decision, requiring a clear understanding of what influences price. By dissecting these factors, I aim to provide valuable insights tailored to each region that the individual can utilize. Additionally, the findings from this analysis can serve urban planners and policymakers, aiding in the development of sustainable, attractive communities that address future residents' needs and preferences. Understanding the consumer preferences that shape demand and affect house prices is vital for informed planning and policy-making
+                This investigation is important because purchasing a home is an important decision, understanding what influences price can help you become an informed buyer. By dissecting these factors, I aim to provide valuable insights tailored to each region that any individual can utilize. Additionally, the findings from this analysis can serve urban planners and policymakers, and aid in the development of attractive communities that address future residents' needs/preferences. Now lets take a look at the data.
             </p>
         </section>
 
         <section class="content-section text-container">
             <h2>Data Collection & Preparation</h2>
             <p>
-                The data combined housing listings from Realtor.com (April 2022 to March 2024) with demographic data from public U.S. sources, like city population, unemployment rates (U.S. Bureau of Labor Statistics), and crime rates (FBI). After cleaning and filtering, the final dataset consisted of over 1 million listings. Key features used were:<br>
+                The data combined <a href="https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset">housing listings from Realtor.com</a> (April 2022 to March 2024) with demographic data from public U.S. sources and Simplemaps; <a href="https://simplemaps.com/data/us-cities">city population</a>, unemployment rates (U.S. Bureau of Labor Statistics), and crime rates (FBI UCR). Any rows with null values,  After cleaning and filtering, the final dataset consisted of about 1 million listings. Key features used were:<br>
                 <ul>
                     <li>Price (thousands)</li>
                     <li>House Size (sq. feet)</li>
                     <li>Lot Size (acre)</li>
-                    <li> Bedrooms, Bathrooms</li>
+                    <li>Bedrooms, Bathrooms</li>
                     <li>Population Density</li>
-                    <li>Unemployment Rate</li>
-                </ul><br>
-                For analysis, I split the data into four regions (West, Northeast, South, Midwest), but focused on the West and Northeast for this project.
+                    <li>Unemployment Rate (% of labor force)</li>
+                    <li>Crime Rate (total crimes per 100,000)</li>
+                </ul>
             </p>
-            <h2>Introduction</h2>
+            <h2>Exploratory Analysis</h2>
             <p>
-                In the process of buying a home, understanding the factors that affect house prices is essential. While many variables contribute to pricing, establishing direct causation for any single factor is complex. To analyze this relationship effectively, I categorized the influencing elements into two main groups: house characteristics and demographics.
+                For analysis, I split the data into four regions (West, Northeast, South, Midwest), but focused on the West and Northeast for this project.
+                <br>
+                <img src="images/hist_four_regions.png" alt="histo of four regions" class="img-fluid" style="max-width: 600px;" center>
+                <br>
+                However, lets still look at all the regions first. Since the listing instances per region were unbalanced (Northeast/Midwest about 155k and the South/West over 300k), I used a density histogram to visualize their distributions. It's evident that the West has the most expensive housing. Both the Midwest and South have high densities of housing below the median price. The Northeast also has a lot of cheaper housing, however it also has more housing than the South and Midwest above the median price. Also note that prices were bounded from $25k to $1.5m for the sake of visualization, and to exclude "mansion" listings (they make analysis difficult) as well as plots of land (may have been scraped accidentally). Now we can compare our regions of interest:<br>
+                <img src="images/hist_west_northeast.png" alt="histo of west vs northeast" class="img-fluid" style="max-width: 600px;" center>
+                <br>
+                With median price lines for each region included, the price discrepancy is very noticable. Next we can review a table summarizing the regions' features.<br>
+                <div class="container mt-5">
+                    <table border="1" class="dataframe">
+                        <thead>
+                          <tr style="text-align: right;">
+                            <th></th>
+                            <th></th>
+                            <th>mean</th>
+                            <th>std</th>
+                            <th>min</th>
+                            <th>max</th>
+                          </tr>
+                          <tr>
+                            <th>region</th>
+                            <th>feature</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th rowspan="8" valign="top">Northeast</th>
+                            <th>acre_lot</th>
+                            <td>18.4</td>
+                            <td>880.7</td>
+                            <td>0.0</td>
+                            <td>100000.0</td>
+                          </tr>
+                          <tr>
+                            <th>bath</th>
+                            <td>2.5</td>
+                            <td>1.1</td>
+                            <td>1.0</td>
+                            <td>113.0</td>
+                          </tr>
+                          <tr>
+                            <th>bed</th>
+                            <td>3.5</td>
+                            <td>1.2</td>
+                            <td>1.0</td>
+                            <td>75.0</td>
+                          </tr>
+                          <tr>
+                            <th>crime_rate</th>
+                            <td>4724.5</td>
+                            <td>1433.6</td>
+                            <td>2203.2</td>
+                            <td>6583.5</td>
+                          </tr>
+                          <tr>
+                            <th>density</th>
+                            <td>1875.3</td>
+                            <td>1821.0</td>
+                            <td>0.0</td>
+                            <td>20363.1</td>
+                          </tr>
+                          <tr>
+                            <th>house_size</th>
+                            <td>2044.2</td>
+                            <td>4183.5</td>
+                            <td>100.0</td>
+                            <td>1560780.0</td>
+                          </tr>
+                          <tr>
+                            <th>price</th>
+                            <td>408.6</td>
+                            <td>269.5</td>
+                            <td>25.0</td>
+                            <td>1500.0</td>
+                          </tr>
+                          <tr>
+                            <th>unemployment_rate</th>
+                            <td>3.4</td>
+                            <td>0.7</td>
+                            <td>2.1</td>
+                            <td>5.3</td>
+                          </tr>
+                          <tr>
+                            <th rowspan="8" valign="top">West</th>
+                            <th>acre_lot</th>
+                            <td>10.6</td>
+                            <td>806.4</td>
+                            <td>0.0</td>
+                            <td>100000.0</td>
+                          </tr>
+                          <tr>
+                            <th>bath</th>
+                            <td>2.4</td>
+                            <td>1.1</td>
+                            <td>1.0</td>
+                            <td>222.0</td>
+                          </tr>
+                          <tr>
+                            <th>bed</th>
+                            <td>3.2</td>
+                            <td>1.6</td>
+                            <td>1.0</td>
+                            <td>444.0</td>
+                          </tr>
+                          <tr>
+                            <th>crime_rate</th>
+                            <td>3786.2</td>
+                            <td>1439.3</td>
+                            <td>1381.3</td>
+                            <td>8188.3</td>
+                          </tr>
+                          <tr>
+                            <th>density</th>
+                            <td>1356.0</td>
+                            <td>1021.8</td>
+                            <td>0.0</td>
+                            <td>8240.9</td>
+                          </tr>
+                          <tr>
+                            <th>house_size</th>
+                            <td>1848.4</td>
+                            <td>1571.7</td>
+                            <td>100.0</td>
+                            <td>290545.0</td>
+                          </tr>
+                          <tr>
+                            <th>price</th>
+                            <td>608.5</td>
+                            <td>294.9</td>
+                            <td>25.0</td>
+                            <td>1500.0</td>
+                          </tr>
+                          <tr>
+                            <th>unemployment_rate</th>
+                            <td>4.5</td>
+                            <td>0.8</td>
+                            <td>2.9</td>
+                            <td>5.2</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
             </p>
+            <p>
+            The table was created from the same filtered data as the histograms. Here are some findings;
+            <ul>
+                <li><strong>Average Listing Price:</strong><br> The average listing price in the West is significantly higher than the Northeast, with a difference of $200k.</li>
+                <li><strong>Price Variability:</strong><br> The standard deviation of prices is greater in the West, indicating a wider range of listing prices compared to the Northeast.</li>
+                <li><strong>Acre Lot Size:</strong><br> The average acre lot size is larger in the Northeast (18.4) compared to the West (10.6).</li>
+                <li><strong>Bedrooms and Bathrooms:</strong><br> The Northeast has a slightly higher average number of bedrooms (3.5) and a similar bathroom count (2.5) compared to the West (3.2 beds, 2.4 baths).</li>
+                <li><strong>Population Density:</strong><br> The Northeast has a higher average density (1875.3) compared to the West (1356.0), indicating more urbanization in the Northeast.</li>
+                <li><strong>House Size:</strong><br> The average house size is larger in the Northeast (2044.2) than in the West (1848.4).</li>
+                <li><strong>Unemployment and Crime:</strong><br> The Northeast has a lower unemployment rate (3.4) than the West (4.5), potentially reflecting more stable economic conditions. However, the Northeast has a higher crime rate (about 1000 more crimes commited per 100,000 people)</li>
+            </ul>
+            Overall, differences in the regions' characteristics is lacking and doesn't warrant the price difference. Therefore, it may be helpful to look at the correlation of these features with a scatter plot. Since the demographics like population density, crime rate, and unemployment are aggregated statistics, we'll exclude them from this analysis. It's important to note, since there are so many data points, a portion of the data was sampled before plotting, but this didn't affect the R^2 values much.<br>
+            <img src="images/scatter_price_vs_size.png" alt="price vs house size" class="img-fluid" style="max-width: 700px;" center>
+            <br>
+            <img src="images/scatter_price_vs_acre.png" alt="price vs lot acres" class="img-fluid" style="max-width: 700px;" center>
+            <br>
+            <img src="images/scatter_price_vs_beds.png" alt="price vs beds" class="img-fluid" style="max-width: 700px;" center>
+            <br>
+            <img src="images/scatter_price_vs_baths.png" alt="price vs baths" class="img-fluid" style="max-width: 700px;" center>
+            <br>
+        </p>
+        <h2>Modeling</h2>
+        <p>
+            Finally, let's see how we can predict listing price with some basic models. For this I'm going to use linear, ridge, and lasso regression, as well as a random forest regressor with 100 estimators and a knn with 5 neighbors. I'll look at both mean absolute error and R^2 to evaluate the models' performance.
+            <img src="images/model_northeast_mae.png" alt="northeast mae" class="img-fluid" style="max-width: 700px;" center>
+            <br>
+            <img src="images/model_west_mae.png" alt="west mae" class="img-fluid" style="max-width: 700px;" center>
+            <br>
+            <img src="images/model_northeast_r2.png" alt="northeast r2" class="img-fluid" style="max-width: 700px;" center>
+            <br>
+            <img src="images/model_west_r2.png" alt="west r2" class="img-fluid" style="max-width: 700px;" center>
+        </p>
+        <h2>Results</h2>
+        <p>
+            I'll get to this soon.
+        </p>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
