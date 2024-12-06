@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Videos Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f0f8; /* Light purple background color */
+        }
+        .navbar {
+            background-color: #541d97; /* Dark purple background for the navbar */
+        }
+        .navbar .nav-link {
+            color: #ffffff; /* White text color */
+        }
+        .navbar .nav-link:hover {
+            color: #982424; /* Maroon color on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+        .text-container {
+            margin: 0 auto; /* Centering the text container */
+            max-width: 800px; /* Maximum width of the text content */
+            padding: 20px; /* Padding around the text content */
+        }
+        .tableauPlaceholder {
+            max-width: 100%; /* Responsive width */
+            height: 900px; /* Set height for the dashboard */
+            margin: 20px 0; /* Margin above and below the dashboard */
+        }
+        h2 {
+            font-size: 1.5rem; /* Adjust the size as needed (e.g., 1.5rem or 24px) */
+        }
+    </style>
+</head>
+<body>
+    <header class="text-center mb-4">
+        <div class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <h1 class="navbar-brand mb-0">Trending YouTube Videos Dashboard</h1>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../index.html" id="home-tab">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../portfolio.html" id="portfolio-tab">Portfolio</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="content-section text-container">
+            <h2>Project Overview</h2>
+            <p>
+                This project explores the dynamics of YouTube videos that trend globally, analyzing how factors like category, likes, comments, and publishing time influence a video's likelihood to trend. Using visualizations, this dashboard provides a deeper understanding of patterns and insights related to trending videos.
+            </p>
+        </section>
+
+        <section class="content-section text-container">
+            <h2>Scope and Goals</h2>
+            <p>The dataset includes key features such as video categories, likes, comments, view counts, and trend lag. The goals of this project are to:</p>
+            <ul>
+                <li><strong>Explore the distribution of trending videos:</strong>
+                    <ul>
+                        <li>Analyze trend lag distributions across categories and video attributes.</li>
+                        <li>Identify categories and channels with the highest number of trending videos.</li>
+                    </ul>
+                </li>
+                <li><strong>Understand relationships between factors contributing to trending status:</strong>
+                    <ul>
+                        <li>Examine how metrics like like/view ratios and comment/view ratios affect trend lag.</li>
+                        <li>Highlight actionable insights for content creators aiming to increase their chances of trending.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <!-- Tableau Embed Code -->
+            <div class="tableauPlaceholder" id="viz1731828009210" style="position: relative">
+                <noscript>
+                    <a href='#'>
+                        <img alt=' ' src='https://public.tableau.com/static/images/Tr/TrendingYouTubeVideosAnalysis/TrendingVideoOverview/1_rss.png' style='border: none' />
+                    </a>
+                </noscript>
+                <object class="tableauViz" style="display:none;">
+                    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                    <param name='embed_code_version' value='3' /> 
+                    <param name='path' value='views/TrendingYouTubeVideosAnalysis/TrendingVideoOverview?:language=en-US&amp;:embed=true&amp;:sid=&amp;:redirect=auth' /> 
+                    <param name='toolbar' value='yes' />
+                    <param name='static_image' value='https://public.tableau.com/static/images/Tr/TrendingYouTubeVideosAnalysis/TrendingVideoOverview/1.png' />
+                    <param name='animate_transition' value='yes' />
+                    <param name='display_static_image' value='yes' />
+                    <param name='display_spinner' value='yes' />
+                    <param name='display_overlay' value='yes' />
+                    <param name='display_count' value='yes' />
+                    <param name='language' value='en-US' />
+                </object>
+            </div>
+            <script type="text/javascript">
+                var divElement = document.getElementById('viz1731828009210');
+                var vizElement = divElement.getElementsByTagName('object')[0];
+                if (divElement.offsetWidth > 800) {
+                    vizElement.style.width = '1000px';
+                    vizElement.style.height = '850px';
+                } else if (divElement.offsetWidth > 500) {
+                    vizElement.style.width = '1000px';
+                    vizElement.style.height = '850px';
+                } else {
+                    vizElement.style.width = '100%';
+                    vizElement.style.height = '1350px';
+                }
+                var scriptElement = document.createElement('script');
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+                vizElement.parentNode.insertBefore(scriptElement, vizElement);
+            </script>
+        </section>
+
+        <section class="content-section text-container">
+            <h2>Insights and Findings</h2>
+            <p>The analysis uncovered several key trends and insights regarding factors influencing video trending:</p>
+            <ul>
+                <li><strong>Trend Lag and Viewer Engagement:</strong>  
+                    <ul>
+                        <li>Shorter trend lags are often associated with higher like/view ratios, suggesting that videos that gain traction quickly tend to have more engaged audiences.</li>
+                        <li>Like percentages and comment/view ratios display noticeable variations across categories, highlighting differences in audience interaction patterns.</li>
+                    </ul>
+                </li>
+                <li><strong>Category Dominance:</strong>  
+                    <ul>
+                        <li>Categories such as music, entertainment, and gaming consistently dominate trending lists, driven by their broad audience appeal and frequent uploads by popular creators.</li>
+                        <li>Educational and niche content appears less frequently but may show high engagement rates within targeted audiences.</li>
+                    </ul>
+                </li>
+                <li><strong>Channel Performance:</strong>  
+                    <ul>
+                        <li>Channels with consistent engagement, such as those maintaining a high like/view ratio and frequent interaction in comments, tend to have a higher frequency of trending videos.</li>
+                        <li>Top-performing channels often utilize effective strategies like timely uploads, audience engagement through comments, and collaboration with other creators.</li>
+                    </ul>
+                </li>
+                <li><strong>Time and Content Characteristics:</strong>
+                    <ul>
+                        <li>Videos published on specific days or times tend to have shorter trend lags, indicating optimal periods for content releases.</li>
+                        <li>Shorter video durations often align with quicker audience attention capture, particularly for categories like entertainment and music.</li>
+                    </ul>
+                </li>
+                <li><strong>Audience Engagement Metrics:</strong>
+                    <ul>
+                        <li>High like/view and comment/view ratios are reliable indicators of a video's likelihood to trend, with engagement metrics varying significantly across categories.</li>
+                        <li>Videos with controversial or discussion-provoking content often show elevated comment/view ratios, which may boost their visibility and chance of trending.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+
+        <section class="content-section text-container">
+            <h2>Conclusion</h2>
+            <p>The analysis highlights factors influencing YouTube trending videos, offering valuable insights for creators and marketers. By focusing on engagement metrics and category-specific strategies, content creators can enhance their chances of trending and reaching a wider audience.</p>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
