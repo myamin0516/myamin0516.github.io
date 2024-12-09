@@ -62,13 +62,29 @@
         <section class="content-section text-container">
             <h2>Project Overview</h2>
             <p>
-                This project explores the dynamics of YouTube videos that trend globally, analyzing how factors like category, likes, comments, and publishing time influence a video's likelihood to trend. Using visualizations, this dashboard provides a deeper understanding of patterns and insights related to trending videos.
+                This project explores the dynamics of YouTube videos that go trending. We will be analyzing how the features of a YouTube video influence a video's likelihood to trend. Additionally, we want to assess if these features impact the speed at which a video goes trending. This dashboard provides an interactive look into these questions. I'll also review some of the interesting and more nuanced insights of my work.
+            </p>
+        </section>
+
+        <section class="content-section text-container">
+            <h2>Data Introduction</h2>
+            <p>
+                YouTube keeps an updating list of the top trending videos on their platform. The trending status is decided by YouTube's algorithm, but essentially the videos are high engagement, and very popular. The <a href="https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset/discussion?sort=undefined">dataset</a> is a compilation of these trending videos, from various regions around the world, gathered by Rishav Sharma utilizing the YouTube API. For this project, we'll be looking at U.S. videos published from 2020 to 2024. The data was updated daily and can contain multiple instances of the same video if that video trended for many days. To align with the purpose of determining what facilitates a trending video, we'll only look at the first instance of the videos (when the video first trended). Additionally, to limit the amount of video categories we'll group the 3 least occuring categories (Travel & Events, Pets & Animals, and Nonprofits & Activism) into a category "Other".<br><br>
+
+                The metrics we're most interested in are views, likes, dislikes, and comments. Since these metrics can vary greatly depending on how quickly a video trends, we'll focus on some computed metrics to standardize our analysis;
+                <ul>
+                    <li><strong>Trend Lag:</strong> Time it took a video to trend (in days)</li>
+                    <li><strong>Like Percentage:</strong> Likes / (Likes + Dislikes)</li>
+                    <li><strong>Like View Ratio:</strong> Likes / Views</li>
+                    <li><strong>Like Comment Ratio:</strong> Likes / Comments</li>
+                </ul>
+
             </p>
         </section>
 
         <section class="content-section text-container">
             <h2>Scope and Goals</h2>
-            <p>The dataset includes key features such as video categories, likes, comments, view counts, and trend lag. The goals of this project are to:</p>
+            <p>The goals of this project are to:</p>
             <ul>
                 <li><strong>Explore the distribution of trending videos:</strong>
                     <ul>
@@ -78,8 +94,9 @@
                 </li>
                 <li><strong>Understand relationships between factors contributing to trending status:</strong>
                     <ul>
-                        <li>Examine how metrics like like/view ratios and comment/view ratios affect trend lag.</li>
-                        <li>Highlight actionable insights for content creators aiming to increase their chances of trending.</li>
+                        <li>Examine how metrics like like view ratios, comment view ratios, and like percentage affect trend lag.</li>
+                        <li>Observe the most frequent tags amongst all the videos.</li>
+                        <li>Compare different categories' metrics in relation to their trend lag.</li>
                     </ul>
                 </li>
             </ul>
@@ -128,6 +145,9 @@
 
         <section class="content-section text-container">
             <h2>Insights and Findings</h2>
+            <p>
+                
+            </p>
             <p>The analysis uncovered several key trends and insights regarding factors influencing video trending:</p>
             <ul>
                 <li><strong>Trend Lag and Viewer Engagement:</strong>  
