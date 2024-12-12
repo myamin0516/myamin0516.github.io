@@ -12,13 +12,13 @@
             background-color: #f4f0f8; /* Light purple background color */
         }
         .navbar {
-            background-color: #541d97; /* Dark purple background for the navbar */
+            background-color: #591aa7d2; /* Dark purple background for the navbar */
         }
         .navbar .nav-link {
             color: #ffffff; /* White text color */
         }
         .navbar .nav-link:hover {
-            color: #982424; /* Maroon color on hover */
+            color: #b51a1a; /* Maroon color on hover */
             text-decoration: underline; /* Underline on hover */
         }
         .text-container {
@@ -34,13 +34,61 @@
         h2 {
             font-size: 1.5rem; /* Adjust the size as needed (e.g., 1.5rem or 24px) */
         }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -160px;
+            height: 100%;
+            width: 200px;
+            background-color: #591aa7d2;
+            padding-top: 80px;
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+        .sidebar:hover {
+            left: 0;
+        }
+        .sidebar ul {
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: rgba(181, 26, 26, 0.7);
+        }
+        .content {
+            margin-left: 0;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                left: -100%;
+            }
+            .sidebar:hover {
+                left: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <header class="text-center mb-4">
         <div class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <h1 class="navbar-brand mb-0">Trending YouTube Videos Dashboard</h1>
+                <h1 class="navbar-brand mb-0">Trending YouTube Videos Analysis</h1>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -58,15 +106,37 @@
         </div>
     </header>
 
+    <div class="sidebar">
+        <div class="container">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="#project-overview">#Project Overview</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#data-introduction">#Data Introduction</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#scope-and-goals">#Scope and Goals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#insights-and-findings">#Insights and Findings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#conclusion">#Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
     <main class="container">
-        <section class="content-section text-container">
+        <section class="content-section text-container" id="project-overview">
             <h2>Project Overview</h2>
             <p>
-                This project explores the dynamics of YouTube videos that go trending. We will be analyzing how the features of a YouTube video influence a video's likelihood to trend. Additionally, we want to assess if these features impact the speed at which a video goes trending. This dashboard provides an interactive look into these questions. I'll also review some of the interesting and more nuanced insights of my work.
+                This project explores the dynamics of YouTube videos that go trending. We will be analyzing how the features of a YouTube video influence a video's likelihood to trend. Additionally, we want to assess if these features impact the speed at which a video goes trending. This dashboard provides an interactive look into these questions. I'll also review some of the interesting and more nuanced insights of my work. First lets look at our data.
             </p>
         </section>
 
-        <section class="content-section text-container">
+        <section class="content-section text-container" id="data-introduction">
             <h2>Data Introduction</h2>
             <p>
                 YouTube keeps an updating list of the top trending videos on their platform. The trending status is decided by YouTube's algorithm, but essentially the videos are high engagement, and very popular. The <a href="https://www.kaggle.com/datasets/rsrishav/youtube-trending-video-dataset/discussion?sort=undefined">dataset</a> is a compilation of these trending videos, from various regions around the world, gathered by Rishav Sharma utilizing the YouTube API. For this project, we'll be looking at U.S. videos published from 2020 to 2024. The data was updated daily and can contain multiple instances of the same video if that video trended for many days. To align with the purpose of determining what facilitates a trending video, we'll only look at the first instance of the videos (when the video first trended). Additionally, to limit the amount of video categories we'll group the 3 least occuring categories (Travel & Events, Pets & Animals, and Nonprofits & Activism) into a category "Other".<br><br>
@@ -82,24 +152,25 @@
             </p>
         </section>
 
-        <section class="content-section text-container">
+        <section class="content-section text-container" id="scope-and-goals">
             <h2>Scope and Goals</h2>
             <p>The goals of this project are to:</p>
             <ul>
-                <li><strong>Explore the distribution of trending videos:</strong>
+                <li><strong>Exploring trending video patterns:</strong>
                     <ul>
                         <li>Analyze trend lag distributions across categories and video attributes.</li>
-                        <li>Identify categories and channels with the highest number of trending videos.</li>
+                        <li>Identify categories and channels that are doing well.</li>
                     </ul>
                 </li>
-                <li><strong>Understand relationships between factors contributing to trending status:</strong>
+                <li><strong>Uncovering what makes a video trend:</strong>
                     <ul>
-                        <li>Examine how metrics like like view ratios, comment view ratios, and like percentage affect trend lag.</li>
-                        <li>Observe the most frequent tags amongst all the videos.</li>
-                        <li>Compare different categories' metrics in relation to their trend lag.</li>
+                        <li>Examine how the metrics like view ratio, comment view ratio, and like percentage affect trend lag.</li>
+                        <li>Spot the most popular tags amongst trending videos.</li>
+                        <li>Compare metrics across categories to see how they relate to trending times.</li>
                     </ul>
                 </li>
             </ul>
+            In summary, this analysis aims to uncover patterns in trending videos and explores the key metrics that influence their success. Let’s dive into the results.
         </section>
 
         <section class="content-section">
@@ -143,51 +214,83 @@
             </script>
         </section>
 
-        <section class="content-section text-container">
+        <section class="content-section text-container" id="insights-and-findings"> 
             <h2>Insights and Findings</h2>
             <p>
-                
+                <img src="images/bubble_chart.png" alt="bubble chart" class="img-fluid" style="max-width: 300px; float: right; margin: 0 15px 15px 0;">
+                The three categories with the most trending videos are gaming, entertainment, and music respectively. Gaming and entertainment both have median likes around 30k, while music boast the highest at 54k. Sports has the 2nd least median likes (least is News and Politics) despite it being the fourth most popular category. There's multiple factors affecting like variation but the main one is trend lag. A video that trends a week after being published is usually going to have more likes than a video that trends the same day because it'll have more chance for engagement. There are also category specific factors; sports videos are likely to trend quicker since videos are often covering recent/ongoing games. Sports videos may also be susceptible to more dislikes, as opposed to likes, depending on the outcome of game and viewer sentiment. The bubble chart was filtered to show the 6 most popular categories.
             </p>
-            <p>The analysis uncovered several key trends and insights regarding factors influencing video trending:</p>
+            <br>
+            <p>
+                <img src="images/supertrender_top10.png" alt="10 super trender" class="img-fluid" style="max-width: 320px; float: left; margin: 0 15px 15px 0;">
+                Now lets look at which channels accumulated the most trending videos, as well as which categories are most prevalent for these channels. We'll use the term "super trender" to describe these channels. Sports channels dominate the top, with just the NFL and NBA accounting for over 800 videos. Next we see a mix of gaming, entertainment/comedy, and science channels in the top 10. As we touched on before, sports channels are likely to be posting updates and content about live or recent games/events. This means sports fans will be quick to tune in and watch the highlights, recaps, interviews, etc. As a result, sports channels are prevalent in the top 30.
+            </p>
+            <p>
+                When we go down to the top 20-30, there's some diversification to music and film, though sports, entertainment, and gaming still dominate (also seen in our bubble chart). Each channel in this group has 84-100 videos that went trending. So, what categories are doing the best and why? Looking at the top 30 super trenders, only 7 of the 13 categories show up (excluding other and how to & style since they only occur in 1 video each).
+                <img src="images/supertrend_top30.png" alt="30 super trender" class="img-fluid" style="max-width: 320px; float: left; margin: 0 15px 15px 0;">
+                Comedy only occurs because Saturday Night Live is an entertainment comedy fusion, and both film and science are each represented by one channel each. In short, sports, gaming, entertainment, and music all have substantial representation in the top 30 super trenders. Yes, these categories are performing the best, but it isn't just because people only care about these categories. The channels themselves, as well as their fan base, plays a more crucial role. Just browsing through the channels names, we can conclude all these channels have been around for many years. They're also consistently uploading content that people want to watch, and people are doing just that. Additionally, they're often well placed channels in their niche; their content isn't found anywhere else, and if it is, their's is the best around. For example, SpaceX posts rocket launch videos, flight tests, mission updates, etc. and if you're interested in that content, you don't have many other options. The Game Theorists, First We Feast, Dude Perfect, MrBeast, are similar in that they're all dominating their content niche. Once they build up a big fan base on loyal viewers, they can essentially farm trending videos. Next we'll look at trend lag.
+            </p>
+            <br>
+            <p>
+                We'll filter for the top 10 categories for the sake of easier observation.
+                <img src="images/trend_lag_lower.png" alt="trend lag lower" class="img-fluid" style="max-width: 350px; float: left; margin: 0 15px 15px 0;">
+                This histogram (below) represents the trend lag distribution of about 40k videos that went trending within about 31 hours. The most prominent category in this group was gaming, followed by entertainment, then music.Only about 2200 videos went trending within 2 hours of being published, sports and music accounted for nearly half of these. We've talked about why for sports, and it's likely a similar reason for music. Fans are likely following the release dates of music and are tuning in as soon as videos are published. Gaming and entertainment dominate for videos that trended 5-12 hours after being published. We can assume this is when the fan bases of these channels are tuning in. For example, if a video is published in the morning it needs some time to get exposure throughout the day before trending. There are very few videos that trend 14-17 hours after being published since this is going to be when most viewers are sleeping or just waking up. The majority of videos go trending 24 hours after being published, give or take a few hours, and their doesn't seem to be any notable deviation from the distribution of categories.
+                <br><br>
+                <img src="images/trend_lag_higher.png" alt="trend lag higher" class="img-fluid" style="max-width: 400px; float: left; margin: 0 15px 15px 0;">
+                The chance of trending seems to heavily drop off past 31 hours. This trend lag distribution (left) only represents about 4k videos which when trending in 2-3 days. The most prominent categories shift, with music now at the front, followed by entertainment, and then gaming. There could be a few reasons for this. Gaming content is often tied with real-time events or updates (new releases or tournaments), this can account for the typically faster trend lag. The consumers of gaming content are likely to be younger and possible gamers themselves, it follows that they consume the content quicker since they're more invested. Additionally, music content usually has a broader appeal and much longer lifespan than gaming content. While die-hard fans may cause immediate trending (seen in theh first histogram), the reach of music content is more likely to grow overtime as people listen and share with friends/family. Music is listened to, not quickly consumed like other content categories, and therefore can take longer to trend. Finally let's look at the interaction metrics.
+            </p>
+            <br>
+            <p>
+                For this dual axis plot, the average metric is computed from all the videos in that specific trend lag bin(intervals of 0.1). 
+                <img src="images/like_percentage_chart.png" alt="like percentage dual" class="img-fluid" style="max-width: 375px; float: left; margin: 0 15px 15px 0;">
+                The like percentage for videos that trended within a couple hours is surprisingly low at 97%, though this could be a result of the video having enough time for the likes and dislikes to stabilize before it went trending. It could also mean that the amount of likes to likes and dislikes isn't important, but getting a high volume of them is. However, all of the video groups that trended within 36 hours, despite the aformentioned 0.1 trend lag group, had an average like percentage greater than 99%. After this like percentage drops off, but also become more inconsistent as there are less videos to compute the metric from. 
+
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="images/like_view_chart.png" alt="like view dual" class="img-fluid" style="max-width: 370px; margin: 0;">
+                    <img src="images/comment_view_chart.png" alt="comment view dual" class="img-fluid" style="max-width: 380px; margin: 0;">
+                </div>
+                
+                When looking at like and comment to view ratio, we see a much more convincing pattern. The highest of both of these averages is seen with videos that trend immediately. Videos with 0.1 trend leg have an average of nearly 9 likes and 1 comment per view, the highest of all other trend lag groups. In both charts, the drop off of these metrics is significant as trend lag increases. This is also supported by the scatter plot (see the 2nd tab of the Tableau embed above) which show less occurences of videos with high like and view ratios with higher trend lag. Speaking of the scatter plot above, the top 10 super trenders' videos were highlighted to see if they had notably high metrics compared with the others. They do not appear to. This further reinforces the importance of having a loyal fanbase, since the metrics outlined in this project aren't sole predictors. 
+            </p>
+            <p>
+                Let's investigate the scatter plot a little more. This time we'll look at the top 10 super trenders only, and color by category. This way we can observe the metrics for both individual videos and popular categories.
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <img src="images/comment_view_scatter.png" alt="comment view scatter" class="img-fluid" style="max-width: 400px; margin: 0;">
+                    <img src="images/like_percentage_scatter.png" alt="like percentage scatter" class="img-fluid" style="max-width: 400px; margin: 0;">
+                </div>
+                Above is the comment view ratio and like percentage, we can't really tell much besides that sports videos (dark red) tend to have the lowest like percentages compared to the other categories. 
+                <br><br>
+                <img src="images/like_view_scatter.png" alt="like view scatter" class="img-fluid" style="max-width: 400px; float: left; margin: 0 15px 15px 0;">
+                Our like view ratio scatter (left) is a little more telling. This shows that sports gets significantly less likes per view compared to the other categories in our top 10 super trenders. Additionally, gaming has a fairly high like to view ratio, followed by entertainment and science/technology. I'd like to explore the categories and metrics more, but it require a more statistical analysis (adding more super trenders clusters the visualization).
+            </p>
+        </section>
+        <br><br>
+
+        <section class="content-section text-container" id="conclusion">
+                <h2>Conclusion</h2>
+                        <p>The analysis uncovered several key trends and insights regarding factors influencing video trending:</p>
             <ul>
                 <li><strong>Trend Lag and Viewer Engagement:</strong>  
                     <ul>
-                        <li>Shorter trend lags are often associated with higher like/view ratios, suggesting that videos that gain traction quickly tend to have more engaged audiences.</li>
+                        <li>Shorter trend lags are often associated with higher like and comment/view ratios, suggesting that videos that gain traction quickly tend to have more engaged audiences.</li>
                         <li>Like percentages and comment/view ratios display noticeable variations across categories, highlighting differences in audience interaction patterns.</li>
                     </ul>
                 </li>
                 <li><strong>Category Dominance:</strong>  
                     <ul>
-                        <li>Categories such as music, entertainment, and gaming consistently dominate trending lists, driven by their broad audience appeal and frequent uploads by popular creators.</li>
-                        <li>Educational and niche content appears less frequently but may show high engagement rates within targeted audiences.</li>
+                        <li>Categories such as music, entertainment, gaming, and sports consistently dominate trending lists, driven either by their broad audience appeal or loyal fan abses, and frequent uploads by popular creators.</li>
+                        <li>While other categories may appear less frequently, a quality content creator with niche positioning can crank out trending videos regardless of category.</li>
                     </ul>
                 </li>
                 <li><strong>Channel Performance:</strong>  
                     <ul>
                         <li>Channels with consistent engagement, such as those maintaining a high like/view ratio and frequent interaction in comments, tend to have a higher frequency of trending videos.</li>
-                        <li>Top-performing channels often utilize effective strategies like timely uploads, audience engagement through comments, and collaboration with other creators.</li>
-                    </ul>
-                </li>
-                <li><strong>Time and Content Characteristics:</strong>
-                    <ul>
-                        <li>Videos published on specific days or times tend to have shorter trend lags, indicating optimal periods for content releases.</li>
-                        <li>Shorter video durations often align with quicker audience attention capture, particularly for categories like entertainment and music.</li>
-                    </ul>
-                </li>
-                <li><strong>Audience Engagement Metrics:</strong>
-                    <ul>
-                        <li>High like/view and comment/view ratios are reliable indicators of a video's likelihood to trend, with engagement metrics varying significantly across categories.</li>
-                        <li>Videos with controversial or discussion-provoking content often show elevated comment/view ratios, which may boost their visibility and chance of trending.</li>
+                        <li>Top-performing channels are likely utilizing effective strategies like timely uploads and audience engagement through comments, and collaboration with other creators.</li>
                     </ul>
                 </li>
             </ul>
         </section>
 
-
-        <section class="content-section text-container">
-            <h2>Conclusion</h2>
-            <p>The analysis highlights factors influencing YouTube trending videos, offering valuable insights for creators and marketers. By focusing on engagement metrics and category-specific strategies, content creators can enhance their chances of trending and reaching a wider audience.</p>
-        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
